@@ -16,21 +16,23 @@
   <meta name="author" content="Xiaoxu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="Pylint for code reviewhttps:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;6a313c843f0d  用法： pylint evaluation_and_generate_result.py –rcfile&#x3D;’&#x2F;Users&#x2F;strdrv&#x2F;Documents&#x2F;pylint.conf’ –disable&#x3D;E1101 py">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://xiaoxu-xli.github.io/2022/05/23/hello-world/index.html">
+<meta property="og:title" content="001_code_review_for_python">
+<meta property="og:url" content="https://xiaoxu-xli.github.io/2022/05/23/001-code-review-for-python/index.html">
 <meta property="og:site_name" content="Xiaoxu&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Pylint for code reviewhttps:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;6a313c843f0d  用法： pylint evaluation_and_generate_result.py –rcfile&#x3D;’&#x2F;Users&#x2F;strdrv&#x2F;Documents&#x2F;pylint.conf’ –disable&#x3D;E1101 py">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-23T11:17:09.000Z">
-<meta property="article:modified_time" content="2022-05-23T11:17:09.420Z">
+<meta property="article:published_time" content="2022-05-23T12:09:30.000Z">
+<meta property="article:modified_time" content="2022-05-23T12:30:47.350Z">
 <meta property="article:author" content="Xiaoxu">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="code">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - Xiaoxu&#39;s blog</title>
+  <title>001_code_review_for_python - Xiaoxu&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +195,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="001_code_review_for_python"></span>
           
         </div>
 
@@ -204,7 +206,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-23 21:17" pubdate>
+        <time datetime="2022-05-23 22:09" pubdate>
           May 23, 2022 pm
         </time>
       </span>
@@ -216,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 words
+          826 words
         
       </span>
     
@@ -227,7 +229,7 @@
         
         
         
-          4 mins
+          7 mins
         
       </span>
     
@@ -265,23 +267,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">001_code_review_for_python</h1>
             
             <div class="markdown-body">
               
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+              <h1 id="Pylint-for-code-review"><a href="#Pylint-for-code-review" class="headerlink" title="Pylint for code review"></a>Pylint for code review</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6a313c843f0d">https://www.jianshu.com/p/6a313c843f0d</a></p>
+<p> 用法：</p>
+<p>pylint evaluation_and_generate_result.py –rcfile&#x3D;’&#x2F;Users&#x2F;strdrv&#x2F;Documents&#x2F;pylint.conf’ –disable&#x3D;E1101</p>
+<p>pylint可以集成到pycharm中</p>
+<h1 id="python-语言规范"><a href="#python-语言规范" class="headerlink" title="python 语言规范"></a>python 语言规范</h1><p>模块名写法: module_name ;</p>
+<p>包名写法: package_name ;</p>
+<p>类名: ClassName ;</p>
+<p>方法名: method_name ;</p>
+<p>异常名: ExceptionName ;</p>
+<p>函数名: function_name ;</p>
+<p>全局常量名: GLOBAL_CONSTANT_NAME ;</p>
+<p>全局变量名: global_var_name ;</p>
+<p>实例名: instance_var_name ;</p>
+<p>函数参数名: function_parameter_name ;</p>
+<p>局部变量名: local_var_name . </p>
+<p>函数名,变量名和文件名应该是描述性的,尽量避免缩写,特别要避免使用非项目人员不清楚难以理解的缩写,不要通过删除单词中的字母来进行缩写. 始终使用 .py 作为文件后缀名,不要用破折号.</p>
+<p>即使是一个打算被用作脚本的文件, 也应该是可导入的. 并且简单的导入不应该导致这个脚本的主功能(main functionality)被执行, 这是一种副作用. 主功能应该放在一个main()函数中.</p>
+<p>如果你正在编辑代码, 花几分钟看一下周边代码, 然后决定风格. 如果它们在所有的算术操作符两边都使用空格, 那么你也应该这样做. 如果它们的注释都用标记包围起来, 那么你的注释也要这样.</p>
+<p>制定风格指南的目的在于让代码有规可循, 这样人们就可以专注于”你在说什么”, 而不是”你在怎么说”. 我们在这里给出的是全局的规范, 但是本地的规范同样重要. 如果你加到一个文件里的代码和原有代码大相径庭, 它会让读者不知所措. 避免这种情况.</p>
 
               
             </div>
@@ -289,6 +297,15 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/">#python</a>
+      
+        <a href="/tags/code/">#code</a>
+      
+    </div>
   
 </div>
 
@@ -298,8 +315,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://xiaoxu-xli.github.io/2022/05/23/hello-world/</div>
+      <div>001_code_review_for_python</div>
+      <div>https://xiaoxu-xli.github.io/2022/05/23/001-code-review-for-python/</div>
     </div>
     <div class="license-meta">
       
@@ -341,15 +358,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/23/001-code-review-for-python/" title="001_code_review_for_python">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">001_code_review_for_python</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/05/23/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
