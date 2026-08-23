@@ -1,13 +1,44 @@
 ---
+import ContentCard from '../../components/ContentCard.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structure = [
+  {
+    eyebrow: 'Context',
+    title: 'Research question',
+    description: 'A concise account of the problem, motivation, and relevant constraints.',
+  },
+  {
+    eyebrow: 'Method',
+    title: 'Technical approach',
+    description: 'The method, contribution, and evaluation setup presented without unnecessary detail.',
+  },
+  {
+    eyebrow: 'Evidence',
+    title: 'Outcomes and outputs',
+    description: 'Verified results and related public outputs when they are available.',
+  },
+];
 ---
 
 <BaseLayout title="Research — Xiaoxu Li" description="Selected research by Xiaoxu Li.">
-  <section class="page-section page-shell">
-    <h1>Research</h1>
-    <p class="prose-intro">
-      Selected research will be presented here, connecting medical imaging, 3D vision,
-      and data-efficient machine learning.
-    </p>
-  </section>
+  <div class="page-section page-shell page-stack">
+    <SectionHeading
+      level="h1"
+      eyebrow="Research"
+      title="Research themes"
+      description="Selected work will connect research questions, technical methods, and evidence across the portfolio."
+    />
+    <section class="page-stack" aria-labelledby="research-structure-title">
+      <SectionHeading
+        id="research-structure-title"
+        title="Case-study structure"
+        description="Each research case study will use a consistent, evidence-first format."
+      />
+      <div class="card-grid">
+        {structure.map((item) => <ContentCard {...item} />)}
+      </div>
+    </section>
+  </div>
 </BaseLayout>

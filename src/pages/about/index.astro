@@ -1,14 +1,41 @@
 ---
+import ContentCard from '../../components/ContentCard.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
 import { siteConfig } from '../../config/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About — Xiaoxu Li" description="About Xiaoxu Li, Senior Research Engineer.">
-  <section class="page-section page-shell">
-    <h1>About</h1>
-    <p class="prose-intro">
-      {siteConfig.formalRole} based in {siteConfig.location}, working across research,
-      machine learning engineering, and production AI.
-    </p>
-  </section>
+  <div class="page-section page-shell page-stack">
+    <SectionHeading
+      level="h1"
+      eyebrow="About"
+      title={siteConfig.name}
+      description={`${siteConfig.formalRole} based in ${siteConfig.location}, working across research, machine learning engineering, and production AI.`}
+    />
+    <section class="page-stack" aria-labelledby="profile-structure-title">
+      <SectionHeading
+        id="profile-structure-title"
+        title="Profile structure"
+        description="The final page will keep professional context concise and evidence-based."
+      />
+      <div class="card-grid">
+        <ContentCard
+          eyebrow="Background"
+          title="Experience"
+          description="A concise timeline of relevant research and engineering roles."
+        />
+        <ContentCard
+          eyebrow="Practice"
+          title="Technical focus"
+          description="A structured view of scientific, engineering, and systems expertise."
+        />
+        <ContentCard
+          eyebrow="Collaboration"
+          title="Leadership"
+          description="Selected supervision, mentoring, and research collaboration context."
+        />
+      </div>
+    </section>
+  </div>
 </BaseLayout>

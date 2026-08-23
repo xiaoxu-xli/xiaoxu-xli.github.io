@@ -1,11 +1,33 @@
 ---
+import SectionHeading from '../components/SectionHeading.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Page not found — Xiaoxu Li" description="The requested page could not be found.">
-  <section class="page-section page-shell">
-    <h1>Page not found</h1>
-    <p class="prose-intro">The page you requested does not exist.</p>
-    <p><a href="/">Return to the homepage</a></p>
+  <section class="not-found page-section page-shell">
+    <SectionHeading
+      level="h1"
+      eyebrow="404"
+      title="Page not found"
+      description="The page you requested does not exist or may have moved."
+    />
+    <p><a href="/">Return to the homepage <span aria-hidden="true">→</span></a></p>
   </section>
 </BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-height: 50vh;
+    align-content: center;
+    gap: var(--space-8);
+  }
+
+  .not-found p {
+    margin: 0;
+  }
+
+  .not-found a {
+    font-weight: var(--font-weight-medium);
+  }
+</style>

@@ -6,14 +6,92 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="site-footer__inner page-shell">
-    <p>&copy; {year} {siteConfig.name}. {siteConfig.location}.</p>
-    <ul class="footer-links" aria-label="Profile links">
-      <li><a href={siteConfig.links.email}>Email</a></li>
-      <li>
-        <a href={siteConfig.links.scholar} rel="me">Google Scholar</a>
-      </li>
-      {siteConfig.links.github && <li><a href={siteConfig.links.github}>GitHub</a></li>}
-      {siteConfig.links.cv && <li><a href={siteConfig.links.cv}>CV</a></li>}
-    </ul>
+    <div class="site-footer__identity">
+      <p class="site-footer__name">{siteConfig.name}</p>
+      <p>{siteConfig.formalRole} · {siteConfig.location}</p>
+    </div>
+    <div class="site-footer__meta">
+      <ul class="footer-links" aria-label="Profile links">
+        <li><a href={siteConfig.links.email}>Email</a></li>
+        <li>
+          <a href={siteConfig.links.scholar} rel="me">Google Scholar</a>
+        </li>
+        {siteConfig.links.github && <li><a href={siteConfig.links.github}>GitHub</a></li>}
+        {siteConfig.links.cv && <li><a href={siteConfig.links.cv}>CV</a></li>}
+      </ul>
+      <p>&copy; {year}</p>
+    </div>
   </div>
 </footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    background: var(--color-surface-muted);
+    font-size: var(--font-size-sm);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    min-height: 9rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-10);
+    padding-block: var(--space-8);
+  }
+
+  .site-footer__identity,
+  .site-footer__meta {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .site-footer__meta {
+    justify-items: end;
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
+  .site-footer__name {
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-2) var(--space-5);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--color-text-muted);
+    text-underline-offset: 0.25em;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 42rem) {
+    .site-footer__inner {
+      align-items: stretch;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .site-footer__meta {
+      justify-items: start;
+    }
+
+    .footer-links {
+      justify-content: flex-start;
+    }
+  }
+</style>

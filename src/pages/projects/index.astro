@@ -1,13 +1,44 @@
 ---
+import ContentCard from '../../components/ContentCard.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structure = [
+  {
+    eyebrow: 'Scope',
+    title: 'Problem and constraints',
+    description: 'The applied problem, operating context, and engineering constraints.',
+  },
+  {
+    eyebrow: 'System',
+    title: 'Architecture and lifecycle',
+    description: 'The key technical decisions from data and models through validation and delivery.',
+  },
+  {
+    eyebrow: 'Evidence',
+    title: 'Outcomes and validation',
+    description: 'Verified outcomes, testing, and public links where available.',
+  },
+];
 ---
 
 <BaseLayout title="Projects — Xiaoxu Li" description="Selected engineering projects by Xiaoxu Li.">
-  <section class="page-section page-shell">
-    <h1>Projects</h1>
-    <p class="prose-intro">
-      Selected applied research and production engineering projects will be presented
-      here as a continuous body of work.
-    </p>
-  </section>
+  <div class="page-section page-shell page-stack">
+    <SectionHeading
+      level="h1"
+      eyebrow="Projects"
+      title="Applied systems"
+      description="Projects will show how research decisions move into reliable technical systems."
+    />
+    <section class="page-stack" aria-labelledby="project-structure-title">
+      <SectionHeading
+        id="project-structure-title"
+        title="Case-study structure"
+        description="Applied work will use the same concise structure across the portfolio."
+      />
+      <div class="card-grid">
+        {structure.map((item) => <ContentCard {...item} />)}
+      </div>
+    </section>
+  </div>
 </BaseLayout>

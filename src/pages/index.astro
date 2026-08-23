@@ -1,6 +1,29 @@
 ---
+import ContentCard from '../components/ContentCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
 import { siteConfig } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    eyebrow: 'Methods and evidence',
+    title: 'Research',
+    description: 'Research themes, technical contributions, and related outputs.',
+    href: '/research/',
+  },
+  {
+    eyebrow: 'Systems and delivery',
+    title: 'Projects',
+    description: 'Applied work presented across the research-to-production continuum.',
+    href: '/projects/',
+  },
+  {
+    eyebrow: 'Peer-reviewed record',
+    title: 'Publications',
+    description: 'Selected work alongside a complete, structured publication record.',
+    href: '/publications/',
+  },
+];
 ---
 
 <BaseLayout
@@ -8,6 +31,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="Senior Research Engineer working across medical AI, 3D computer vision, applied machine learning, and LLM systems."
 >
   <section class="hero page-shell" aria-labelledby="page-title">
+    <p class="hero__eyebrow">Research and engineering portfolio</p>
     <h1 id="page-title">{siteConfig.name}</h1>
     <p class="hero__role" aria-label={`Current role: ${siteConfig.formalRole}. Applied Scientist positioning.`}>
       {siteConfig.positioning}
@@ -16,4 +40,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       Medical AI · 3D Computer Vision · Applied Machine Learning · LLM Systems
     </p>
   </section>
+
+  <section class="page-section portfolio-overview" aria-labelledby="overview-title">
+    <div class="page-shell page-stack">
+      <SectionHeading
+        id="overview-title"
+        eyebrow="Portfolio structure"
+        title="Research to production"
+        description="The site is organized to connect scientific questions with applied systems and technical delivery."
+      />
+      <div class="card-grid">
+        {
+          sections.map((section) => (
+            <ContentCard {...section} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .hero__eyebrow {
+    margin: 0;
+    color: var(--color-accent-strong);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-caps);
+    text-transform: uppercase;
+  }
+
+  .portfolio-overview {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface-muted);
+  }
+</style>

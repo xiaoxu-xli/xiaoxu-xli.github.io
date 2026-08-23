@@ -1,13 +1,35 @@
 ---
+import ContentCard from '../../components/ContentCard.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Publications — Xiaoxu Li" description="Publications by Xiaoxu Li.">
-  <section class="page-section page-shell">
-    <h1>Publications</h1>
-    <p class="prose-intro">
-      A selected and complete publication record will be added from the verified source
-      material.
-    </p>
-  </section>
+  <div class="page-section page-shell page-stack">
+    <SectionHeading
+      level="h1"
+      eyebrow="Publications"
+      title="Publication record"
+      description="The publication page will balance a focused selection with a complete, verifiable record."
+    />
+    <section class="page-stack" aria-labelledby="publication-structure-title">
+      <SectionHeading
+        id="publication-structure-title"
+        title="Record structure"
+        description="Entries will remain compact and provide public links only when available."
+      />
+      <div class="card-grid">
+        <ContentCard
+          eyebrow="Focused view"
+          title="Selected publications"
+          description="A concise selection aligned with the main research narrative."
+        />
+        <ContentCard
+          eyebrow="Full view"
+          title="Complete record"
+          description="A chronological record with venue, year, status, and optional links."
+        />
+      </div>
+    </section>
+  </div>
 </BaseLayout>
