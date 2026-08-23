@@ -1,25 +1,8 @@
 ---
 import ContentCard from '../../components/ContentCard.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
+import { researchThemes } from '../../data/content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const structure = [
-  {
-    eyebrow: 'Context',
-    title: 'Research question',
-    description: 'A concise account of the problem, motivation, and relevant constraints.',
-  },
-  {
-    eyebrow: 'Method',
-    title: 'Technical approach',
-    description: 'The method, contribution, and evaluation setup presented without unnecessary detail.',
-  },
-  {
-    eyebrow: 'Evidence',
-    title: 'Outcomes and outputs',
-    description: 'Verified results and related public outputs when they are available.',
-  },
-];
 ---
 
 <BaseLayout title="Research — Xiaoxu Li" description="Selected research by Xiaoxu Li.">
@@ -28,16 +11,24 @@ const structure = [
       level="h1"
       eyebrow="Research"
       title="Research themes"
-      description="Selected work will connect research questions, technical methods, and evidence across the portfolio."
+      description="Four verified themes connect research questions, technical methods, and evidence across the portfolio."
     />
-    <section class="page-stack" aria-labelledby="research-structure-title">
+    <section class="page-stack" aria-labelledby="research-records-title">
       <SectionHeading
-        id="research-structure-title"
-        title="Case-study structure"
-        description="Each research case study will use a consistent, evidence-first format."
+        id="research-records-title"
+        title="Structured research records"
+        description="These summaries are sourced from FACTS.md; detailed case-study pages are deferred."
       />
       <div class="card-grid">
-        {structure.map((item) => <ContentCard {...item} />)}
+        {
+          researchThemes.map((theme) => (
+            <ContentCard
+              eyebrow={`Theme ${String(theme.order).padStart(2, '0')}`}
+              title={theme.title}
+              description={theme.shortSummary}
+            />
+          ))
+        }
       </div>
     </section>
   </div>

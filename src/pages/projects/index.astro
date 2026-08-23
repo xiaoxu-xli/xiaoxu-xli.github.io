@@ -1,25 +1,8 @@
 ---
 import ContentCard from '../../components/ContentCard.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
+import { compactProjects, primaryProjects } from '../../data/content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const structure = [
-  {
-    eyebrow: 'Scope',
-    title: 'Problem and constraints',
-    description: 'The applied problem, operating context, and engineering constraints.',
-  },
-  {
-    eyebrow: 'System',
-    title: 'Architecture and lifecycle',
-    description: 'The key technical decisions from data and models through validation and delivery.',
-  },
-  {
-    eyebrow: 'Evidence',
-    title: 'Outcomes and validation',
-    description: 'Verified outcomes, testing, and public links where available.',
-  },
-];
 ---
 
 <BaseLayout title="Projects — Xiaoxu Li" description="Selected engineering projects by Xiaoxu Li.">
@@ -28,16 +11,34 @@ const structure = [
       level="h1"
       eyebrow="Projects"
       title="Applied systems"
-      description="Projects will show how research decisions move into reliable technical systems."
+      description="Structured project records connect research decisions with engineering systems and technical delivery."
     />
-    <section class="page-stack" aria-labelledby="project-structure-title">
+    <section class="page-stack" aria-labelledby="primary-projects-title">
       <SectionHeading
-        id="project-structure-title"
-        title="Case-study structure"
-        description="Applied work will use the same concise structure across the portfolio."
+        id="primary-projects-title"
+        title="Primary applied-AI projects"
+        description="Detailed case-study layouts are deferred; these records expose only verified summaries."
       />
       <div class="card-grid">
-        {structure.map((item) => <ContentCard {...item} />)}
+        {
+          primaryProjects.map((project) => (
+            <ContentCard eyebrow="Primary project" title={project.title} description={project.shortSummary} />
+          ))
+        }
+      </div>
+    </section>
+    <section class="page-stack" aria-labelledby="compact-projects-title">
+      <SectionHeading
+        id="compact-projects-title"
+        title="Additional verified work"
+        description="Compact records can be expanded in a later content milestone."
+      />
+      <div class="card-grid">
+        {
+          compactProjects.map((project) => (
+            <ContentCard eyebrow="Compact record" title={project.title} description={project.shortSummary} />
+          ))
+        }
       </div>
     </section>
   </div>

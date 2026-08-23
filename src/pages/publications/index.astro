@@ -1,6 +1,7 @@
 ---
 import ContentCard from '../../components/ContentCard.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
+import { featuredPublications, publications } from '../../data/content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
@@ -10,25 +11,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       level="h1"
       eyebrow="Publications"
       title="Publication record"
-      description="The publication page will balance a focused selection with a complete, verifiable record."
+      description={`${publications.length} publication records are structured from FACTS.md, with ${featuredPublications.length} proposed for the featured selection.`}
     />
-    <section class="page-stack" aria-labelledby="publication-structure-title">
+    <section class="page-stack" aria-labelledby="featured-publications-title">
       <SectionHeading
-        id="publication-structure-title"
-        title="Record structure"
-        description="Entries will remain compact and provide public links only when available."
+        id="featured-publications-title"
+        title="Proposed featured publications"
+        description="This relevance-based selection requires human approval; missing links and unstated statuses remain unset."
       />
       <div class="card-grid">
-        <ContentCard
-          eyebrow="Focused view"
-          title="Selected publications"
-          description="A concise selection aligned with the main research narrative."
-        />
-        <ContentCard
-          eyebrow="Full view"
-          title="Complete record"
-          description="A chronological record with venue, year, status, and optional links."
-        />
+        {
+          featuredPublications.map((publication) => (
+            <ContentCard
+              eyebrow={[publication.year, publication.status].filter(Boolean).join(' · ')}
+              title={publication.title}
+              description={`${publication.authors.join(', ')}. ${publication.venue}.`}
+            />
+          ))
+        }
       </div>
     </section>
   </div>
