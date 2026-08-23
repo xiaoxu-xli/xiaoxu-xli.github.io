@@ -15,6 +15,14 @@ export const profile: Profile = {
   industryResearchSince: 2019,
   summary:
     'Senior Research Engineer working across medical imaging, 3D computer vision, production AI, and LLM systems, with industry R&D experience since 2019.',
+  homepageIntroduction: [
+    'I work across medical imaging, 3D computer vision, applied machine learning, and LLM systems.',
+    'My work connects data-efficient learning, diffusion and point-cloud methods with production ML and RAG applications.',
+  ],
+  about: [
+    'As a Senior Research Engineer at Straxcorp / CurveBeam AI, I lead research and engineering for machine-learning systems in musculoskeletal CT and CBCT.',
+    'The work spans the full ML lifecycle, from clinical data and model development through evaluation, cloud deployment, production inference, and iterative improvement.',
+  ],
   links: {
     email: 'mailto:xiaoxu.xli@gmail.com',
     googleScholar: 'https://scholar.google.com/citations?user=vzGWmWQAAAAJ&hl=en',

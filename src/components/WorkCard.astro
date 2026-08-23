@@ -1,0 +1,99 @@
+---
+import type { HomepageWorkItem } from '../types/content';
+
+interface Props {
+  item: HomepageWorkItem;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="work-card">
+  <h3>{item.title}</h3>
+  <p class="work-card__summary">{item.summary}</p>
+  {
+    item.outcomes.length > 0 && (
+      <ul class="work-card__outcomes">
+        {item.outcomes.map((outcome) => <li>{outcome}</li>)}
+      </ul>
+    )
+  }
+  {
+    item.technologies.length > 0 && (
+      <ul class="work-card__technologies" aria-label="Key technologies">
+        {item.technologies.map((technology) => <li>{technology}</li>)}
+      </ul>
+    )
+  }
+</article>
+
+<style>
+  .work-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: clamp(var(--space-5), 4vw, var(--space-8));
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .work-card__summary {
+    margin: var(--space-3) 0 0;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+
+  .work-card__outcomes {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-5) 0 0;
+    border-top: 1px solid var(--color-border);
+    margin: var(--space-5) 0 0;
+    list-style: none;
+  }
+
+  .work-card__outcomes li {
+    position: relative;
+    padding-left: var(--space-5);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+  }
+
+  .work-card__outcomes li::before {
+    position: absolute;
+    top: 0.7em;
+    left: 0;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+    content: '';
+  }
+
+  .work-card__technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-6) 0 0;
+    margin: auto 0 0;
+    list-style: none;
+  }
+
+  .work-card__technologies li {
+    color: var(--color-text-subtle);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .work-card__technologies li:not(:last-child)::after {
+    margin-left: var(--space-4);
+    color: var(--color-border-strong);
+    content: '·';
+  }
+</style>

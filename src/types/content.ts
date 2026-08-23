@@ -65,6 +65,8 @@ export interface Profile {
   location: string;
   industryResearchSince: number;
   summary: string;
+  homepageIntroduction: readonly string[];
+  about: readonly string[];
   links: ProfileLinkSet;
   skillGroups: readonly SkillGroup[];
   education: readonly EducationRecord[];
@@ -134,6 +136,15 @@ export interface ResearchTheme extends PortfolioRecord {
 export interface AppliedProject extends PortfolioRecord {
   slug: ProjectSlug;
   detailLevel: 'primary' | 'compact';
+}
+
+export interface HomepageWorkItem {
+  slug: string;
+  title: string;
+  summary: string;
+  outcomes: readonly string[];
+  technologies: readonly string[];
+  source: SourceReference;
 }
 
 export interface HumanReviewItem {

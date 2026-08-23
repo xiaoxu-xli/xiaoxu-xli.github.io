@@ -2,14 +2,14 @@
 import { siteConfig } from '../config/site';
 
 const navigation = [
-  { href: '/research/', label: 'Research' },
-  { href: '/projects/', label: 'Projects' },
-  { href: '/publications/', label: 'Publications' },
-  { href: '/about/', label: 'About' },
+  { href: '/#about', label: 'About' },
+  { href: '/#work', label: 'Work' },
+  { href: '/#publications', label: 'Publications' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 const currentPath = Astro.url.pathname;
-const isActive = (href: string) => currentPath.startsWith(href);
 const isHome = currentPath === '/';
 ---
 
@@ -29,9 +29,7 @@ const isHome = currentPath === '/';
         {
           navigation.map(({ href, label }) => (
             <li>
-              <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
-                {label}
-              </a>
+              <a href={href}>{label}</a>
             </li>
           ))
         }
@@ -98,13 +96,8 @@ const isHome = currentPath === '/';
     text-decoration: none;
   }
 
-  .site-nav a:hover,
-  .site-nav a[aria-current='page'] {
+  .site-nav a:hover {
     color: var(--color-text);
-  }
-
-  .site-nav a[aria-current='page'] {
-    box-shadow: inset 0 -0.125rem var(--color-accent);
   }
 
   @media (max-width: 42rem) {
@@ -122,13 +115,10 @@ const isHome = currentPath === '/';
     }
 
     .site-nav {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      display: flex;
+      justify-content: flex-start;
       gap: var(--space-1) var(--space-4);
     }
 
-    .site-nav a {
-      width: 100%;
-    }
   }
 </style>

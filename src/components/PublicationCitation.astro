@@ -1,0 +1,95 @@
+---
+import type { Publication } from '../types/content';
+
+interface Props {
+  publication: Publication;
+}
+
+const { publication } = Astro.props;
+---
+
+<li class="publication-citation">
+  <article>
+    <p class="publication-citation__meta">
+      <span>{publication.year}</span>
+      {publication.status && <span class="publication-citation__status">{publication.status}</span>}
+    </p>
+    <h3>{publication.title}</h3>
+    <p class="publication-citation__authors">
+      {
+        publication.authors.map((author, index) => (
+          <>
+            {author === 'Xiaoxu Li' ? <strong>{author}</strong> : author}
+            {index < publication.authors.length - 1 ? ', ' : ''}
+          </>
+        ))
+      }
+    </p>
+    <p class="publication-citation__venue">
+      {publication.venue}{publication.volume && `, vol. ${publication.volume}`}
+    </p>
+  </article>
+</li>
+
+<style>
+  .publication-citation {
+    min-width: 0;
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .publication-citation::marker {
+    color: var(--color-text-subtle);
+    font-size: var(--font-size-xs);
+    font-variant-numeric: tabular-nums;
+  }
+
+  article {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .publication-citation__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    color: var(--color-accent-strong);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.04em;
+  }
+
+  .publication-citation__status {
+    padding: 0.0625rem var(--space-2);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-xs);
+    background: var(--color-accent-soft);
+    text-transform: uppercase;
+  }
+
+  h3 {
+    max-width: var(--width-reading);
+    font-size: var(--font-size-base);
+    line-height: 1.45;
+  }
+
+  .publication-citation__authors,
+  .publication-citation__venue {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    line-height: 1.55;
+  }
+
+  .publication-citation__authors strong {
+    color: var(--color-text);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .publication-citation__venue {
+    color: var(--color-text-subtle);
+    font-style: italic;
+  }
+</style>
