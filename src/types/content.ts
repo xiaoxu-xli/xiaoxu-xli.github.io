@@ -66,7 +66,6 @@ export interface Profile {
   industryResearchSince: number;
   summary: string;
   homepageIntroduction: readonly string[];
-  about: readonly string[];
   links: ProfileLinkSet;
   skillGroups: readonly SkillGroup[];
   education: readonly EducationRecord[];

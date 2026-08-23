@@ -2,11 +2,10 @@
 import { siteConfig } from '../config/site';
 
 const navigation = [
-  { href: '/#about', label: 'About' },
   { href: '/#work', label: 'Work' },
   { href: '/#publications', label: 'Publications' },
   { href: '/#experience', label: 'Experience' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/#education', label: 'Education' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -22,7 +21,6 @@ const isHome = currentPath === '/';
       aria-current={isHome ? 'page' : undefined}
     >
       <span class="site-brand__name">{siteConfig.name}</span>
-      <span class="site-brand__descriptor">Research &amp; engineering</span>
     </a>
     <nav aria-label="Primary navigation">
       <ul class="site-nav">
@@ -64,13 +62,6 @@ const isHome = currentPath === '/';
   .site-brand__name {
     font-weight: var(--font-weight-semibold);
     letter-spacing: -0.015em;
-  }
-
-  .site-brand__descriptor {
-    margin-top: var(--space-1);
-    color: var(--color-text-subtle);
-    font-size: var(--font-size-xs);
-    letter-spacing: 0.02em;
   }
 
   nav {

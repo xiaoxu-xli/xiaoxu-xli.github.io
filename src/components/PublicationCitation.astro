@@ -6,14 +6,21 @@ interface Props {
 }
 
 const { publication } = Astro.props;
+
+const conferenceAbbreviations: Readonly<Record<string, string>> = {
+  '33rd International Conference on Neural Information Processing (ICONIP 2026)': 'ICONIP',
+  'IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)': 'ICASSP',
+  'Medical Image Computing and Computer-Assisted Intervention (MICCAI)': 'MICCAI',
+};
+
+const conference = conferenceAbbreviations[publication.venue];
+const venueLabel = conference
+  ? `${conference} ${publication.year}`
+  : `${publication.venue} · ${publication.year}`;
 ---
 
 <li class="publication-citation">
   <article>
-    <p class="publication-citation__meta">
-      <span>{publication.year}</span>
-      {publication.status && <span class="publication-citation__status">{publication.status}</span>}
-    </p>
     <h3>{publication.title}</h3>
     <p class="publication-citation__authors">
       {
@@ -25,9 +32,7 @@ const { publication } = Astro.props;
         ))
       }
     </p>
-    <p class="publication-citation__venue">
-      {publication.venue}{publication.volume && `, vol. ${publication.volume}`}
-    </p>
+    <p class="publication-citation__venue">{venueLabel}</p>
   </article>
 </li>
 
@@ -47,26 +52,6 @@ const { publication } = Astro.props;
   article {
     display: grid;
     gap: var(--space-2);
-  }
-
-  .publication-citation__meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-2);
-    margin: 0;
-    color: var(--color-accent-strong);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.04em;
-  }
-
-  .publication-citation__status {
-    padding: 0.0625rem var(--space-2);
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-xs);
-    background: var(--color-accent-soft);
-    text-transform: uppercase;
   }
 
   h3 {

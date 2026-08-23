@@ -4,6 +4,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import WorkCard from '../components/WorkCard.astro';
 import {
   featuredPublications,
+  homepageExperience,
   homepageWork,
   professionalExperience,
   profile,
@@ -11,11 +12,6 @@ import {
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const experience = professionalExperience[0];
-const experienceHighlights = experience
-  ? [experience.highlights[0], experience.highlights[3], experience.highlights[6]].filter(
-      (highlight): highlight is string => Boolean(highlight),
-    )
-  : [];
 
 const formatMonthYear = (value: string) => {
   const [year, month] = value.split('-').map(Number);
@@ -26,16 +22,18 @@ const formatMonthYear = (value: string) => {
     timeZone: 'UTC',
   }).format(new Date(Date.UTC(year, month - 1, 1)));
 };
+
+const formatRoleTitle = (title: string) =>
+  title === 'Software Engineer — Image Analysis' ? 'Software Engineer' : title;
 ---
 
 <BaseLayout
-  title={`${profile.name} — ${profile.homepagePositioning}`}
+  title={`${profile.name} — ${profile.formalRole}`}
   description={profile.homepageIntroduction.join(' ')}
 >
   <section class="home-hero page-shell" aria-labelledby="page-title">
-    <p class="home-hero__eyebrow">Research and engineering portfolio</p>
     <h1 id="page-title">{profile.name}</h1>
-    <p class="home-hero__role">{profile.homepagePositioning}</p>
+    <p class="home-hero__role">{profile.formalRole}</p>
     <p class="home-hero__domains">{profile.domains.join(' · ')}</p>
     <p class="home-hero__introduction">{profile.homepageIntroduction.join(' ')}</p>
     <ul class="profile-links" aria-label="Profile links">
@@ -46,26 +44,12 @@ const formatMonthYear = (value: string) => {
     </ul>
   </section>
 
-  <section id="about" class="page-section home-section" aria-labelledby="about-title">
-    <div class="page-shell about-layout">
-      <SectionHeading
-        id="about-title"
-        eyebrow="About"
-        title="Research depth, applied delivery"
-      />
-      <div class="about-copy">
-        {profile.about.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-    </div>
-  </section>
-
   <section id="work" class="page-section home-section home-section--muted" aria-labelledby="work-title">
     <div class="page-shell home-section-stack">
       <SectionHeading
         id="work-title"
-        eyebrow="Selected work"
-        title="Across research and production"
-        description="Medical imaging research, applied machine learning, production systems, and modern AI applications presented as one connected body of work."
+        title="Selected Work"
+        description="Selected research and engineering work in medical imaging, computer vision, production ML, and LLM/RAG systems."
       />
       <div class="work-grid">
         {homepageWork.map((item) => <WorkCard item={item} />)}
@@ -78,9 +62,7 @@ const formatMonthYear = (value: string) => {
       <div class="section-introduction">
         <SectionHeading
           id="publications-title"
-          eyebrow="Selected publications"
-          title="Research contributions"
-          description={`${featuredPublications.length} publications selected across medical image analysis, segmentation, reconstruction, and point-cloud learning.`}
+          title="Selected Publications"
         />
         <a class="section-link" href={profile.links.googleScholar} rel="me">
           View full publication list on Google Scholar <span aria-hidden="true">→</span>
@@ -103,14 +85,14 @@ const formatMonthYear = (value: string) => {
           <SectionHeading
             id="experience-title"
             eyebrow="Experience"
-            title={experience.organization}
+            title={homepageExperience.organization}
             description={`${experience.location} · ${formatMonthYear(experience.startDate)} – Present`}
           />
           <div class="experience-layout">
             <ol class="role-timeline" aria-label="Role progression">
               {experience.roles.map((role) => (
                 <li>
-                  <p class="role-timeline__title">{role.title}</p>
+                  <p class="role-timeline__title">{formatRoleTitle(role.title)}</p>
                   <p class="role-timeline__dates">
                     {formatMonthYear(role.startDate)} – {role.endDate ? formatMonthYear(role.endDate) : 'Present'}
                   </p>
@@ -118,7 +100,7 @@ const formatMonthYear = (value: string) => {
               ))}
             </ol>
             <ul class="experience-highlights">
-              {experienceHighlights.map((highlight) => <li>{highlight}</li>)}
+              {homepageExperience.highlights.map((highlight) => <li>{highlight}</li>)}
             </ul>
           </div>
         </div>
@@ -126,9 +108,9 @@ const formatMonthYear = (value: string) => {
     )
   }
 
-  <section class="page-section home-section" aria-labelledby="education-title">
+  <section id="education" class="page-section home-section" aria-labelledby="education-title">
     <div class="page-shell home-section-stack">
-      <SectionHeading id="education-title" eyebrow="Education" title="Academic background" />
+      <SectionHeading id="education-title" title="Education" />
       <ol class="education-list">
         {
           profile.education.map((education) => (
@@ -145,28 +127,13 @@ const formatMonthYear = (value: string) => {
     </div>
   </section>
 
-  <section id="contact" class="contact-section page-section--compact" aria-labelledby="contact-title">
-    <div class="page-shell contact-layout">
-      <SectionHeading
-        id="contact-title"
-        eyebrow="Contact"
-        title={profile.location}
-        description={profile.formalRole}
-      />
-      <ul class="profile-links" aria-label="Contact and profile links">
-        <li><a href={profile.links.email}>Email</a></li>
-        <li><a href={profile.links.googleScholar} rel="me">Google Scholar</a></li>
-      </ul>
-    </div>
-  </section>
 </BaseLayout>
 
 <style>
-  :global(#about),
   :global(#work),
   :global(#publications),
   :global(#experience),
-  :global(#contact) {
+  :global(#education) {
     scroll-margin-top: var(--space-6);
   }
 
@@ -174,15 +141,6 @@ const formatMonthYear = (value: string) => {
     display: grid;
     gap: var(--space-4);
     padding-block: clamp(var(--space-12), 7vw, var(--space-20));
-  }
-
-  .home-hero__eyebrow {
-    margin: 0;
-    color: var(--color-accent-strong);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-caps);
-    text-transform: uppercase;
   }
 
   .home-hero h1 {
@@ -243,26 +201,6 @@ const formatMonthYear = (value: string) => {
   .home-section-stack {
     display: grid;
     gap: clamp(var(--space-8), 5vw, var(--space-12));
-  }
-
-  .about-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    gap: clamp(var(--space-8), 8vw, var(--space-20));
-  }
-
-  .about-copy {
-    max-width: var(--width-reading);
-  }
-
-  .about-copy p {
-    color: var(--color-text-muted);
-    font-size: var(--font-size-md);
-    line-height: 1.75;
-  }
-
-  .about-copy p:last-child {
-    margin-bottom: 0;
   }
 
   .work-grid {
@@ -380,20 +318,7 @@ const formatMonthYear = (value: string) => {
     color: var(--color-text-subtle) !important;
   }
 
-  .contact-section {
-    border-top: 1px solid var(--color-border);
-    background: var(--color-background);
-  }
-
-  .contact-layout {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: var(--space-8);
-  }
-
   @media (max-width: 54rem) {
-    .about-layout,
     .work-grid,
     .publication-list,
     .experience-layout {
@@ -406,8 +331,7 @@ const formatMonthYear = (value: string) => {
   }
 
   @media (max-width: 42rem) {
-    .section-introduction,
-    .contact-layout {
+    .section-introduction {
       align-items: flex-start;
       flex-direction: column;
       gap: var(--space-5);

@@ -1,5 +1,5 @@
 export { professionalExperience } from './experience';
-export { homepageWork } from './homepage';
+export { homepageExperience, homepageWork } from './homepage';
 export { humanReviewItems } from './humanReview';
 export { profile } from './profile';
 export { compactProjects, primaryProjects, projects } from './projects';
