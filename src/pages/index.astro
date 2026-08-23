@@ -1,0 +1,19 @@
+---
+import { siteConfig } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title={`${siteConfig.name} — Research and Engineering`}
+  description="Senior Research Engineer working across medical AI, 3D computer vision, applied machine learning, and LLM systems."
+>
+  <section class="hero page-shell" aria-labelledby="page-title">
+    <h1 id="page-title">{siteConfig.name}</h1>
+    <p class="hero__role" aria-label={`Current role: ${siteConfig.formalRole}. Applied Scientist positioning.`}>
+      {siteConfig.positioning}
+    </p>
+    <p class="hero__domains">
+      Medical AI · 3D Computer Vision · Applied Machine Learning · LLM Systems
+    </p>
+  </section>
+</BaseLayout>

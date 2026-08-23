@@ -1,0 +1,19 @@
+---
+import { siteConfig } from '../config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner page-shell">
+    <p>&copy; {year} {siteConfig.name}. {siteConfig.location}.</p>
+    <ul class="footer-links" aria-label="Profile links">
+      <li><a href={siteConfig.links.email}>Email</a></li>
+      <li>
+        <a href={siteConfig.links.scholar} rel="me">Google Scholar</a>
+      </li>
+      {siteConfig.links.github && <li><a href={siteConfig.links.github}>GitHub</a></li>}
+      {siteConfig.links.cv && <li><a href={siteConfig.links.cv}>CV</a></li>}
+    </ul>
+  </div>
+</footer>

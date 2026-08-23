@@ -1,0 +1,14 @@
+---
+import { siteConfig } from '../../config/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About — Xiaoxu Li" description="About Xiaoxu Li, Senior Research Engineer.">
+  <section class="page-section page-shell">
+    <h1>About</h1>
+    <p class="prose-intro">
+      {siteConfig.formalRole} based in {siteConfig.location}, working across research,
+      machine learning engineering, and production AI.
+    </p>
+  </section>
+</BaseLayout>
