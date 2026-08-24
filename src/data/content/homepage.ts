@@ -56,20 +56,21 @@ export const homepageWork: readonly HomepageWorkItem[] = [
   selectWork(requireProject('production-3d-medical-ai-nnunet-lifecycle'), {
     title: 'Production 3D Medical AI',
     summary:
-      'End-to-end deep-learning systems for 3D CT/CBCT segmentation, from model development and validation to automated deployment and production inference.',
+      'Production-grade 3D medical AI systems with end-to-end MLOps workflows covering model development, automated validation, CI/CD, cloud deployment, and production inference.',
     outcomes: [
       'Developed a unified lower-limb segmentation framework covering hip, knee, and foot anatomy across all 34 lower-limb bones.',
-      'Built an nnU-Net-based model lifecycle and AWS inference pipeline, reducing end-to-end CT processing time from approximately 2 hours to 15 minutes.',
+      'Built production inference workflows on AWS using Docker, Kubernetes/EKS, Lambda, SQS, S3, and API Gateway, reducing end-to-end CT processing time from approximately 2 hours to 15 minutes.',
+      'Integrated end-to-end model validation and deployment workflows into CI/CD using CodeBuild, CodePipeline, and CloudFormation, enabling repeatable testing and model updates across development and production environments.',
     ],
-    technologies: ['3D Segmentation', 'nnU-Net', 'PyTorch', 'AWS'],
+    technologies: ['3D Segmentation', 'nnU-Net', 'PyTorch', 'AWS / MLOps'],
   }),
   selectWork(requireResearch('data-efficient-medical-imaging'), {
-    title: 'Data-Efficient Medical Imaging',
+    title: 'Data-Efficient Machine Learning',
     summary:
-      'Learning from limited annotations through semi-supervised learning, pseudo-labelling, partial supervision, teacher–student learning, and domain adaptation.',
+      'Data-efficient CT segmentation using semi-supervised learning, partial supervision, teacher–student learning, domain adaptation, and pseudo-labelling.',
     outcomes: [
-      'Achieved approximately 97.16% mIoU with a patch-shuffle semi-supervised method, compared with 98.13% under full supervision.',
-      'Built a multi-round pseudo-labelling workflow for wrist CT, producing more than 5,000 annotated slices while reducing estimated annotation effort from approximately 336 hours to 10 hours.',
+      'Developed a sustained research line in data-efficient bone segmentation, evolving from semi-supervised learning (BSPC 2023) to partial supervision (ICASSP 2025) and the broader Probing, Priors, and Teaching framework (ESWA 2026).',
+      'Built a pseudo-labelling workflow for wrist CT, producing 5,000+ annotated slices while reducing estimated annotation effort from ~336 hours to ~10 hours.',
     ],
     technologies: [
       'Semi-Supervised Learning',
@@ -98,7 +99,7 @@ export const homepageWork: readonly HomepageWorkItem[] = [
     summary:
       'Sparse 3D point-cloud learning for anatomical segmentation as an alternative to dense voxel-based CT processing.',
     outcomes: [
-      'Investigated one-stage and two-stage rib-segmentation pipelines, narrowing much of the reported performance gap through architecture and training optimisation.',
+      'Investigated one-stage and two-stage rib-segmentation pipelines, examining how architecture and training design affect the performance of sparse point-cloud models.',
       'Analysed the effects of sampling density, graph size, augmentation, and model capacity, with the work accepted at ICONIP 2026.',
     ],
     technologies: [
@@ -109,32 +110,32 @@ export const homepageWork: readonly HomepageWorkItem[] = [
     ],
   }),
   selectWork(requireProject('llm-rag-application-platform'), {
-    title: 'LLM / RAG Application Platform',
+    title: 'LLM / RAG Systems',
     summary:
-      'A modular LLM and RAG system for scientific literature retrieval, paper summarisation, and corpus-grounded question answering.',
+      'A modular large language model (LLM) and retrieval-augmented generation (RAG) system for scientific literature retrieval, summarisation, and corpus-grounded question answering.',
     outcomes: [
-      'Built a retrieval pipeline using Sentence Transformers, document chunking, ChromaDB vector search, and source-grounded generation across PDF, DOCX, CSV, and Markdown corpora.',
-      'Designed interchangeable OpenAI and local-Llama backends, with persistent literature caching and exploration of Neo4j-based graph-enhanced retrieval.',
+      'Developed a source-grounded retrieval architecture combining document ingestion, semantic embeddings, vector search, and context-aware generation across heterogeneous scientific corpora.',
+      'Designed a modular LLM layer supporting both cloud-hosted and local inference backends, including OpenAI and local Llama models, with persistent literature caching and exploration of Neo4j-based knowledge graphs and hybrid vector–graph retrieval.',
     ],
-    technologies: ['RAG', 'Llama', 'Sentence Transformers', 'ChromaDB'],
+    technologies: ['LLM / RAG', 'Sentence Transformers', 'ChromaDB', 'Neo4j'],
   }),
   selectWork(requireResearch('dinov3-and-sam-large-scale-segmentation'), {
-    title: 'DINOv3 & SAM',
+    title: 'Foundation Models for Data-Centric Learning',
     summary:
-      'A data-centric segmentation workflow combining foundation-model representations, similarity-based sample discovery, assisted annotation, and iterative training.',
+      'Using foundation-model representations and assisted annotation to guide data selection and iterative segmentation.',
     outcomes: [
-      'Used DINOv3 feature similarity to identify dissimilar and under-represented imagery for targeted dataset expansion, with SAM-assisted annotation for newly selected samples.',
-      'Repeated training and validation as the dataset expanded, followed by large-scale inference on high-resolution aerial imagery.',
+      'Investigated how foundation-model representations can support data curation by identifying distribution gaps and selecting diverse, representative samples for targeted dataset expansion.',
+      'Developed a foundation-model-assisted learning loop combining DINOv3-based sample selection, SAM-assisted annotation, and iterative nnU-Net training and validation within a broader MLOps-enabled continuous-learning lifecycle.',
     ],
-    technologies: ['DINOv3', 'SAM', 'Active Data Selection', 'Semantic Segmentation'],
+    technologies: ['Foundation Models', 'DINOv3', 'SAM', 'nnU-Net', 'MLOps'],
   }),
 ];
 
 export const homepageExperience = {
   organization: 'CurveBeam AI (formerly Straxcorp)',
   highlights: [
-    'Lead research and development of deep-learning and AI systems, spanning 3D CT/CBCT segmentation, YOLO/DETR-based anatomical detection, landmark localisation, diffusion-based reconstruction, quantitative imaging, and LLM/RAG applications.',
-    'Drive end-to-end research-to-production development, from data curation, model design and experimentation through clinical validation, automated ML workflows, cloud deployment, production inference, and iterative model improvement.',
-    'Lead collaborative R&D with engineers, clinicians, and university researchers, while supervising and mentoring 3 research engineers and 2 Ph.D. researchers.',
+    'Lead applied machine-learning R&D across 3D medical AI, data-efficient learning, diffusion and point-cloud models, foundation models, quantitative imaging, and LLM/RAG systems.',
+    'Drive the full research-to-production and MLOps lifecycle, from clinical data curation and model experimentation through validation, CI/CD, cloud deployment, production inference, and continuous model improvement.',
+    'Lead cross-functional R&D with engineers, clinicians, and university researchers, while supervising and mentoring 3 research engineers and 2 Ph.D. researchers, with collaborative work resulting in peer-reviewed publications across medical imaging and machine learning.',
   ],
 } as const;

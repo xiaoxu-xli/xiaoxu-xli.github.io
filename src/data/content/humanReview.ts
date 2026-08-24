@@ -38,6 +38,16 @@ export const humanReviewItems: readonly HumanReviewItem[] = [
     source: factsSource('LLM & AI Systems Projects — 10. Knowledge Graph & Graph-Enhanced RAG'),
   },
   {
+    id: 'foundation-model-ml-lifecycle-linkage',
+    subject: 'Foundation-model and MLOps lifecycle linkage',
+    note: 'The homepage copy links DINOv3 sample selection and SAM-assisted annotation with iterative nnU-Net updates in a broader MLOps lifecycle. FACTS.md documents those capabilities separately but does not explicitly describe them as one integrated workflow.',
+    affectedRecords: ['dinov3-and-sam-large-scale-segmentation'],
+    source: factsSource(
+      'Additional Computer Vision & Engineering Projects — 11. Cross-Domain Remote Sensing Segmentation',
+      'Core Machine Learning & Medical AI Projects — 2. nnU-Net Data Flywheel & Automated ML Lifecycle',
+    ),
+  },
+  {
     id: 'missing-public-links',
     subject: 'Publication and project URLs',
     note: 'No DOI, PDF, code, or project URLs are supplied in FACTS.md. Optional link fields remain unset.',
