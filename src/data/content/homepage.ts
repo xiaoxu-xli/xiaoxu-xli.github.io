@@ -73,10 +73,9 @@ export const homepageWork: readonly HomepageWorkItem[] = [
       'Built a pseudo-labelling workflow for wrist CT, producing 5,000+ annotated slices while reducing estimated annotation effort from ~336 hours to ~10 hours.',
     ],
     technologies: [
-      'Semi-Supervised Learning',
+      'Semi/Partial Supervision',
       'Pseudo-Labelling',
-      'Teacher–Student Learning',
-      'Domain Adaptation',
+      'Teacher–Student',
     ],
   }),
   selectWork(requireResearch('3d-reconstruction-and-diffusion'), {
